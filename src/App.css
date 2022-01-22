@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
-}
+/** @format */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root {
+	--youtube-red: #ff0000;
+	--youtube-black: #292929;
+	--youtube-white: #ffffff;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+img {
+	display: inline-block;
 }
-
-.App-link {
-  color: #61dafb;
+abbr {
+	text-decoration: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar {
+	background-color: #292929;
+	width: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(206, 204, 204,0.6);
+	border-radius: 100vw;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(206, 204, 204,0.6);
+}
+::-webkit-scrollbar-track {
+	border-radius: 100vw;
+}
+.app {
+	height: 100vh;
+	background-color: #fc2929;
+	overflow-y: overlay;
+	height: 100vh;
+	width: 100vw;
+}
+.color-white {
+	color: white;
+}
+.yt-red {
+	color: var(--youtube-red);
+}
+.rounded {
+	border-radius: 50px;
+}
+.text-grey {
+	color: rgb(105, 105, 105);
+}
+.capitalize {
+	text-transform: capitalize;
+}
+.flex {
+	display: flex;
+}
+.bg-black {
+	background: black;
+}
+.text-decorate-none {
+	text-decoration: none;
+}
+@media (min-width: 768px) {
+	.sm-none {
+		display: none;
+	}
 }

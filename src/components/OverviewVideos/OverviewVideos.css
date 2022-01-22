@@ -1,0 +1,38 @@
+/** @format */
+
+.home-overview-videos-container {
+	background-color: #1b1b1b;
+	/* padding: 20px 5.125rem; */
+	/* margin: 100px auto; */
+	/* overflow-y: overlay; */
+	padding: 1000px 0 0 1000px;
+	margin: 1000px;
+}
+@media (min-width: 768px) {
+	.home-overview-videos-container {
+		display: grid;
+	}
+}
+.video-card {
+	display: flex;
+	flex-direction: column;
+	color: white;
+	margin: 10px;
+	overflow-wrap: break-word;
+	cursor: pointer;
+}
+.video-card:hover {
+	background: #fff;
+}
+.card__details {
+	display: flex;
+}
+@media (min-width: 768px) {
+	.home-overview-videos-container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		padding: 0;
+		padding-top: 20px;
+		margin: 0;
+	}
+}

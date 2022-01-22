@@ -1,0 +1,22 @@
+/** @format */
+
+.header-tags-container {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	top: 60px;
+	left:60px;
+	/* width: calc(100% - 50px); */
+	/* right: 0; */
+	height: 60px;
+	background-color: var(--youtube-black);
+	border-bottom: 1px solid #5f5966;
+	border-top: 1px solid #5f5966;
+}
+.header__tag {
+	display: inline-block;
+	border-radius: 25px;
+	margin: 10px 5px;
+	padding: 5px 10px;
+	text-transform: capitalize;
+}

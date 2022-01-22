@@ -1,0 +1,28 @@
+/** @format */
+
+.sidebar {
+	position: fixed;
+	top: 60px;
+	width: 72px;
+	height: 100%;
+	background: var(--youtube-black);
+}
+.sidebar > abbr {
+	display: block;
+	cursor: pointer;
+}
+.icon {
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 10px;
+}
+.icon__img {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.icon:hover {
+	background-color: rgb(121, 121, 121);
+}

@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+/** @format */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import {useSelector} from 'react-redux';
+import {Route, Routes} from 'react-router-dom';
+import './App.css';
+import Login from './components/Login';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Results from './pages/Results';
+import Video from './pages/Video';
+
+const App = () => {
+	const userReducer = useSelector(state => state.userReducer);
+	if (!userReducer.isLoggedIn) return <Login />;
+	return (
+		<div className='app'>
+			<Header />
+
+			<div style={{display: 'flex'}} className=''>
+				{/* <Sidebar /> */}
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/results' element={<Results />} />
+					<Route path='/watch' element={<Video />} />
+				</Routes>
+			</div>
+		</div>
+	);
+};
 
 export default App;

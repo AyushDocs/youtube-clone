@@ -1,0 +1,38 @@
+/** @format */
+
+.results-container {
+	/* position: fixed; */
+	background-color: black;
+	/* top: 10%;
+	left: 7%; */
+	/* height: 100%;
+	width: 100%; */
+	overflow-y: scroll;
+	overflow-wrap: normal;
+}
+.result__item {
+	display: flex;
+	width: 93%;
+	cursor: pointer;
+	margin: 20px 55px;
+}
+.result__item:hover {
+	background-color: rgb(133, 129, 129);
+}
+.channel{
+    	display: flex;
+	width: 100%;
+	cursor: pointer;
+}
+.channel__item__img {
+	border-radius: 50px;
+
+	margin: 20px 55px;
+	/* aspect-ratio: 1/1;
+    background-color: black;
+    border: 10px solid black;
+    box-shadow: 10px black; */
+}
+.channel__item__content{
+margin:20px 0
+}
