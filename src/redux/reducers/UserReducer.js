@@ -1,9 +1,10 @@
 import actions from '../actions.json'
 const initialState = {
-	name: JSON.parse(localStorage.getItem('auth'))?.name||undefined,
+	name: JSON.parse(localStorage.getItem('auth'))?.name || undefined,
 	imgUrl: JSON.parse(localStorage.getItem('auth'))?.imgUrl || undefined,
 	email: JSON.parse(localStorage.getItem('auth'))?.email || undefined,
 	isLoggedIn: JSON.parse(localStorage.getItem('auth'))?.isLoggedIn || false,
+	access_token: JSON.parse(localStorage.getItem('auth'))?.access_token || undefined,
 };
 
 const userReducer=(state=initialState,action) =>{

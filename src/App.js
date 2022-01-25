@@ -3,8 +3,9 @@
 import {useSelector} from 'react-redux';
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
-import Login from './components/Login';
 import Header from './components/Header';
+import Login from './components/Login';
+import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Results from './pages/Results';
 import Video from './pages/Video';
@@ -17,7 +18,7 @@ const App = () => {
 			<Header />
 
 			<div style={{display: 'flex'}} className=''>
-				{/* <Sidebar /> */}
+				<Sidebar />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/results' element={<Results />} />

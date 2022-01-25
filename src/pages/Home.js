@@ -1,8 +1,9 @@
 /** @format */
 
-import React from 'react';
-import HeaderTags from '../components/HeaderTags';
+import React, {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import OverviewVideos from '../components/OverviewVideos';
+import actions from '../redux/actions.json';
 const json = [
 	{title: 'The Call | Pepsi Super Bowl LVI Halftime Show OFFICIAL TRAILER', channel: 'Pepsi', videoImg: 'https://i.ytimg.com/vi/h3NhX6-5mO0/mqdefault.jpg', published: '2022-01-20T13:45:01Z', id: 'h3NhX6-5mO0'},
 	{title: 'Charlie Puth - Light Switch [Official Music Video]', channel: 'Charlie Puth', videoImg: 'https://i.ytimg.com/vi/WFsAon_TWPQ/mqdefault.jpg', published: '2022-01-20T17:00:10Z', id: 'WFsAon_TWPQ'},
@@ -14,6 +15,10 @@ const json = [
 	{title: 'ANTONIO BROWN OPENS UP WITH BRANDON MARSHALL | I AM ATHLETE', channel: 'I AM ATHLETE', videoImg: 'https://i.ytimg.com/vi/PH_1E0YmHJ4/mqdefault.jpg', published: '2022-01-20T16:40:09Z', id: 'PH_1E0YmHJ4'},
 ];
 const Home = () => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch({type: actions.SET_SHOW_SIDEBAR, payload: true});
+	}, [dispatch]);
 	return (
 		<div>
 			{/* <HeaderTags /> */}

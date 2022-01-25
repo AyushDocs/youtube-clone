@@ -1,11 +1,8 @@
 /** @format */
 
 .sidebar {
-	position: fixed;
-	top: 60px;
-	width: 72px;
-	height: 100%;
-	background: var(--youtube-black);
+	display: none;
+	transition: all 0.3s ease-in;
 }
 .sidebar > abbr {
 	display: block;
@@ -25,4 +22,17 @@
 }
 .icon:hover {
 	background-color: rgb(121, 121, 121);
+}
+.show-sidebar {
+	transform: translateX(0);
+}
+@media (min-width: 600px) {
+	.sidebar {
+		display: block;
+		position: sticky;
+		top: 60px;
+		width: 72px;
+		height: 100vh;
+		background: var(--youtube-black);
+	}
 }
