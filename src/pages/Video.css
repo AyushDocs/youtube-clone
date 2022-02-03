@@ -1,8 +1,8 @@
 /** @format */
 
 .video-page {
-	margin: 90px 10px;
 	overflow-x: hidden;
+	margin: 90px 10px;
 }
 .iframe {
 	height: 300px;
@@ -10,6 +10,7 @@
 }
 .video-container {
 	flex: 0.7;
+	justify-content: center;
 }
 .video__title {
 	color: white;
@@ -37,10 +38,12 @@
 	margin: 10px 15px;
 	cursor: pointer;
 }
-@media (min-width: 768px) {
+.recommended-videos {
+	border-top: 1px solid white;
+}
+@media (min-width: 1000px) {
 	.video-page {
 		display: flex;
-		margin: auto 70px;
 	}
 	.iframe {
 		width: 640px;

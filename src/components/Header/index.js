@@ -9,14 +9,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import actions from '../../redux/actions.json';
 import ReactImg from '../utils/ReactImg';
 import './Header.css';
 const Header = () => {
 	const userReducer = useSelector(state => state.userReducer);
 	const [ShowFullSearch, setShowFullSearch] = useState(false);
 	const [search, setSearch] = useState('');
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -25,7 +27,7 @@ const Header = () => {
 	return (
 		<header className={`youtube-header ${ShowFullSearch || ' space-between'}`}>
 			<div className='header__left show-lg'>
-				<HeaderIcon name='menu' icon={MenuIcon} className='hamburger' />
+				<HeaderIcon onClick={() => dispatch({type: actions.SET_SHOW_SIDEBAR, payload: true})} name='menu' icon={MenuIcon} className='hamburger' />
 				<div className='yt-icon'>
 					<HeaderIcon name='/' icon={YouTubeIcon} className='yt-red' />
 					<div className='color-white yt-header-icon-text'>

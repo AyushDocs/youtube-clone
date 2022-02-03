@@ -2,14 +2,14 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: 300px;
+	/*grid-template-columns: 300px; */
 	background-color: #1b1b1b;
 	margin: 20px auto;
 }
 .video-card {
 	position: relative;
 	color: white;
-	margin: 10px;
+	margin: 10px auto;
 	cursor: pointer;
 }
 .video-card .card__details h4.capitalize {
@@ -35,23 +35,23 @@
 }
 .card__img {
 	object-fit: contain;
-	width: 300px;
+	/* width: 300px; */
+	width: 100%;
 }
 .card__title {
 	overflow-wrap: break-word;
 }
-@media (min-width: 650px) {
+@media (min-width: 500px) {
 	.grid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+	.video-card {
+		margin: 10px;
 	}
 }
 @media (min-width: 768px) {
 	.grid {
 		grid-template-columns: repeat(3, 1fr);
-	}
-
-	.card__img {
-		width: 100%;
 	}
 }
 @media (min-width: 900px) {

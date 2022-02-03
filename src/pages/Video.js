@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {useDispatch} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
+import styled from 'styled-components';
 import {youtube} from '../axios';
 import loadingGif from '../components/utils/loading.gif';
 import actions from '../redux/actions.json';
@@ -19,18 +20,25 @@ const Video = () => {
 	const [params] = useSearchParams();
 	const [Data, setData] = useState({});
 	const [RecommendedVideos, setRecommendedVideos] = useState({items: []});
+	const [ShowFullDescription, setShowFullDescription] = useState(false);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch({type: actions.SET_SHOW_SIDEBAR, payload: false});
 	}, [dispatch]);
 	useEffect(() => {
 		const getData = async () => {
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 10});
 			const response = await youtube.get('/videos?part=snippet%2CcontentDetails%2Cstatistics', {params: {id: params.get('v')}});
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 70});
 			console.log(response.data.items[0]);
 			setData(response.data.items[0]);
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 90});
+			setTimeout(() => {
+				dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 100});
+			}, 10);
 		};
 		getData();
-	}, [params]);
+	}, [dispatch, params]);
 	useEffect(() => {
 		const getData = async () => {
 			const response = await youtube.get('/search', {
@@ -86,7 +94,10 @@ const Video = () => {
 				<div className='color-grey'>
 					<div>{Data?.statistics?.commentCount} Subscribers</div>
 					<div style={{whiteSpace: 'pre-line'}} className='color-white'>
-						{Data?.snippet?.localized?.description}
+						{ShowFullDescription || Data?.snippet?.localized?.description?.substring(0, 20)}
+						{ShowFullDescription || <Button onClick={() => setShowFullDescription(true)}>Show Full</Button>}
+						{ShowFullDescription && Data?.snippet?.localized?.description}
+						{ShowFullDescription && <Button onClick={() => setShowFullDescription(false)}>Show Less</Button>}
 					</div>
 				</div>
 			</div>
@@ -122,3 +133,12 @@ const RecommendedVideo = ({data}) => {
 };
 
 export default Video;
+const Button = styled.div`
+	background-color: blue;
+	color: black;
+	padding: 5px 10px;
+	border: none;
+	width: fit-content;
+	cursor: pointer;
+	border-radius: 5px;
+`;

@@ -20,14 +20,20 @@ const Results = () => {
 	useEffect(() => {
 		const getData = async () => {
 			const search = params.get('search_query');
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 10});
 			const response = await youtube.get('/search', {
 				params: {
 					q: search,
 					maxResults: 10,
 				},
 			});
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 60});
 			console.log(response.data);
 			setData(response.data.items);
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 90});
+			setTimeout(() => {
+				dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 100});
+			}, 10);
 			nextPageToken.current = response.data.nextPageToken;
 			// const _optionalData = yTReducer.searchResults[search];
 			// if (_optionalData !== undefined) {
@@ -45,7 +51,7 @@ const Results = () => {
 		};
 
 		getData();
-	}, [params]);
+	}, [dispatch, params]);
 	const getMoreData = useCallback(async () => {
 		setloading(true);
 		const search = params.get('search_query');

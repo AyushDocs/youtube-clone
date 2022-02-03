@@ -4,17 +4,17 @@ import moment from 'moment';
 import numeral from 'numeral';
 import React, {useEffect, useState} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {youtube} from '../../axios';
-import HeaderTags from '../HeaderTags';
 import loadingGif from '../utils/loading.gif';
 import ReactImg from '../utils/ReactImg';
 import './OverviewVideos.css';
 const Index = props => {
 	const [Data, setData] = useState({items: []});
 	const [loading, setloading] = useState(true);
+	const dispatch = useDispatch();
 	const yTReducer = useSelector(state => state.yTReducer);
 	useEffect(() => {
 		const getData = async () => {
@@ -23,6 +23,7 @@ const Index = props => {
 				setData(data);
 				return;
 			}
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 10});
 			const response = await youtube.get('/videos?part=snippet,contentDetails,statistics', {
 				params: {
 					chart: 'mostPopular',
@@ -30,12 +31,14 @@ const Index = props => {
 					maxResults: 8,
 				},
 			});
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 50});
 			console.log(response.data);
 			setData(response.data);
+			dispatch({type: 'SET_TOP_LOADING_PROGRESS', payload: 100});
 			setloading(false);
 		};
 		getData();
-	}, [yTReducer.viewedData]);
+	}, [dispatch, yTReducer.viewedData]);
 	const getMoreData = async () => {
 		setloading(true);
 		const response = await youtube.get('/videos?part=snippet,contentDetails,statistics', {
@@ -52,7 +55,7 @@ const Index = props => {
 	};
 	return (
 		<>
-			<HeaderTags />
+			{/* <HeaderTags /> */}
 			<InfiniteScroll className='grid' dataLength={Data.items.length} next={getMoreData} loader={<img src={loadingGif} alt='' />} hasMore={true} isLoading={loading}>
 				{Data.items.map(item => (
 					<div key={item.id}>

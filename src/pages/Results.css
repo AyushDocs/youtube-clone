@@ -2,10 +2,9 @@
 
 .results-container {
 	background-color: rgb(27, 27, 27);
-	margin: 75px 10px;
 }
 .result__item {
-	width: 100%;
+	/* width: 100%; */
 	cursor: pointer;
 }
 .result__item:hover {
@@ -35,7 +34,7 @@
 		margin-left: 55px;
 	}
 	.results-container {
-		margin: auto 20px;
+		margin: 75px 20px;
 		padding: 0 50px;
 	}
 }
